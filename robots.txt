@@ -1,0 +1,21 @@
+# このサイトは検索結果に出さない方針です。
+#
+# ただし、ここで Disallow: / と書いてはいけません。
+# Google は index.html を実際に読みに来て初めて <meta name="robots" content="noindex">
+# に気づきます。robots.txt でクロールを止めると noindex を読めず、
+# 外部からリンクされた場合に「タイトルなしのURLだけ」が検索結果に残ります。
+#
+# したがってクロールは許可し、除外は各ページの noindex に任せます。
+
+User-agent: *
+Allow: /
+
+# 検索エンジンではないアーカイブ系だけは明示的に断ります。
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: archive.org_bot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /

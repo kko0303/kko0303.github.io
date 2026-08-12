@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>沓澤 晃一 | Official Site</title>
+<meta name="description" content="3Dプリンターでつくるものと、日々のお知らせ。">
+<meta name="theme-color" content="#0a0a0c">
+
+<!-- ===== 検索避け =====================================================
+     検索エンジンにこのページを載せないための指定です。
+     robots.txt でクロール自体を止めてはいけません。Googleはページを
+     読みに来て初めて noindex に気づくので、ブロックすると逆に
+     「URLだけ」が検索結果に残ることがあります。
+     ==================================================================== -->
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate">
+<meta name="googlebot" content="noindex, nofollow, noimageindex">
+<meta name="bingbot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="沓澤 晃一 | Official Site">
+<meta property="og:description" content="3Dプリンターでつくるものと、日々のお知らせ。">
+<meta property="og:image" content="works/01_アクセサリーツリー.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- ============================================================================
+     文面はこのファイルだけ直せば変わります。
+
+       index.html   ← 文章・見出し・日付（このファイル）
+       style.css    ← 色や余白などの見た目
+       script.js    ← 作品リスト（写真のキャプション）と動き
+
+     タグ（< > で囲まれた部分）は消さずに、その内側の文字だけ書き換えてください。
+     セクションごと要らなければ <section> から </section> まで丸ごと消せます。
+     直したら index.html をブラウザで開いて確認 → python3 publish.py で site/ を更新。
+     ============================================================================ -->
+
+<header id="hdr">
+  <a class="brand" href="#hero">
+    <span class="mark"></span>
+    <span class="wm">KUTSUZAWA</span>
+  </a>
+  <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  <nav id="nav">
+    <ul>
+      <li><a href="#works">WORKS</a></li>
+      <li><a href="#news">NEWS</a></li>
+      <li><a href="#about">ABOUT</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<section id="hero">
+  <div class="bg"></div>
+  <div class="veil"></div>
+  <div class="inner">
+    <div class="hero-line"></div>
+    <!-- 小見出し（英字） -->
+    <div class="eyebrow">3D Printing Works &amp; News</div>
+    <!-- 大きく出る名前 -->
+    <h1>沓澤 晃一</h1>
+    <div class="romaji">KOICHI KUTSUZAWA</div>
+    <!-- キャッチコピー。<br> で改行、行を増やしたければ <span> ごとコピー -->
+    <p class="lead">
+      <span>3Dプリンターで、暮らしの道具から記念のかたちまで。</span><br>
+      <span>設計から出力、仕上げまでを一人でつくっています。</span>
+    </p>
+  </div>
+  <div class="cue">
+    <span class="t">SCROLL</span>
+    <span class="l"></span>
+  </div>
+</section>
+
+<!-- ==================== WORKS ==================== -->
+<section class="sec" id="works">
+  <div class="sec-inner">
+    <div class="sec-head rise">
+      <span class="sec-num">01</span>
+      <div class="sec-title">
+        <div class="en">Works</div>
+        <div class="jp">つくったもの</div>
+      </div>
+      <span class="rule"></span>
+    </div>
+
+    <div class="works-grid" id="works-grid"></div>
+
+    <p class="works-note rise">
+      作品は随時追加していきます。
+    </p>
+  </div>
+</section>
+
+<!-- ==================== NEWS ==================== -->
+<section class="sec" id="news">
+  <div class="sec-inner">
+    <div class="sec-head rise">
+      <span class="sec-num">02</span>
+      <div class="sec-title">
+        <div class="en">News</div>
+        <div class="jp">おしらせ</div>
+      </div>
+      <span class="rule"></span>
+    </div>
+
+    <div class="news-split">
+      <figure class="news-figure rise">
+        <img src="news/wedding-rings.jpg" alt="結婚指輪" loading="lazy">
+      </figure>
+      <div class="news-body rise">
+        <!-- ▼ ここから結婚報告の文面 -->
+        <div class="eyebrow">Just Married</div>
+        <div class="news-date">2026.05.19</div>
+        <h3>結婚しました。</h3>
+
+        <!-- 段落を増やすときは <p>〜</p> をまるごとコピーして下に足してください -->
+        <p>このたび、私たちは結婚いたしました。</p>
+        <p>これまで支えてくださった皆さまに、心より感謝申し上げます。
+           ふたりで力を合わせ、明るい家庭を築いてまいります。
+           今後とも変わらぬお付き合いをよろしくお願いいたします。</p>
+
+        <div class="sign">K &amp; M</div>
+        <!-- ▲ ここまで -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ABOUT ==================== -->
+<section class="sec" id="about">
+  <div class="sec-inner">
+    <div class="sec-head rise">
+      <span class="sec-num">03</span>
+      <div class="sec-title">
+        <div class="en">About</div>
+        <div class="jp">じこしょうかい</div>
+      </div>
+      <span class="rule"></span>
+    </div>
+
+    <div class="about-split">
+      <figure class="portrait rise">
+        <!-- 顔写真を portrait.jpg として置いてください。無い場合はこの figure ごと消してOK -->
+        <img src="portrait.jpg" alt="沓澤 晃一" loading="lazy">
+        <figcaption>KOICHI KUTSUZAWA</figcaption>
+      </figure>
+
+      <div class="rise">
+        <!-- ▼ 大きめに出る導入の一文 -->
+        <p class="about-lead">
+          頭の中にあるかたちを、そのまま手に取れるものにする。
+          それが面白くて3Dプリンターを触りはじめました。
+        </p>
+        <!-- ▼ 続きの本文 -->
+        <p>
+          既製品では少しだけ足りない、というものを自分でつくっています。
+          モデリングから積層設定、後加工まで含めて、実際に使えるところまで仕上げるのが好きです。
+        </p>
+
+        <!-- ▼ 一覧。行を増やすときは <div>〜</div> をコピー、消すときは行ごと削除 -->
+        <dl class="spec">
+          <div><dt>NAME</dt><dd>沓澤 晃一 / Koichi Kutsuzawa</dd></div>
+          <div><dt>WORKS</dt><dd>3Dモデリング、造形物の設計・出力</dd></div>
+          <div><dt>TOOLS</dt><dd>FDM 3Dプリンター / PLA・PLA+</dd></div>
+          <div><dt>INTEREST</dt><dd>日用品、アクセサリー、記念品</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 結び ==================== -->
+<section class="sec" id="closing">
+  <div class="sec-inner">
+    <div class="eyebrow">Thank you</div>
+    <div class="big">ありがとう<br>ございます</div>
+    <p>このページは、お渡ししたチップからのみご覧いただけます。</p>
+    <div class="closing-mark"></div>
+  </div>
+</section>
+
+<footer>
+  <span>&copy; 2026 KOICHI KUTSUZAWA</span>
+  <span>PRIVATE PAGE</span>
+</footer>
+
+<div class="lb" id="lb">
+  <button class="x" aria-label="閉じる">&times;</button>
+  <button class="nav prev" aria-label="前へ">&lsaquo;</button>
+  <img id="lb-img" alt="">
+  <button class="nav next" aria-label="次へ">&rsaquo;</button>
+  <div class="cap" id="lb-cap"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

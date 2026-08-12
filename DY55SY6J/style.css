@@ -214,6 +214,15 @@ nav a:hover{color:var(--text)} nav a:hover::after{width:100%}
   position:absolute; z-index:2; left:16px; top:14px;
   font-family:var(--serif); font-size:.82rem; letter-spacing:.16em; color:var(--gold-lt);
 }
+/* 同じ作品に写真が複数あるときの枚数バッジ */
+.card .count{
+  position:absolute; z-index:2; right:14px; top:12px;
+  min-width:22px; height:22px; padding:0 6px;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--line); border-radius:11px;
+  background:rgba(10,10,12,.6); backdrop-filter:blur(4px);
+  font-family:var(--serif); font-size:.72rem; color:var(--gold-lt);
+}
 .card .meta{display:flex; align-items:baseline; gap:14px; margin-top:16px}
 .card .ttl{font-size:.92rem; letter-spacing:.1em; font-weight:400}
 .card .cat{font-size:.6rem; letter-spacing:.24em; color:var(--muted); margin-left:auto; flex:none}

@@ -2,27 +2,47 @@
    作品リスト。
    works/ フォルダに画像を入れて build_page.py を実行すると
    ここが自動で書き換わります。手で足しても構いません。
+
+   1つの作品に写真を複数入れられます。カードには1枚目が出て、
+   タップすると2枚目以降も送れます。
    ============================================================ */
-const PHOTOS = [
-  { src: "works/01_アクセサリーツリー.jpg", caption: "アクセサリーツリー" },
+const WORKS = [
+  { title: "アクセサリーツリー", photos: ["works/01_アクセサリーツリー.jpg"] },
+  { title: "IKEA SKADIS ボードアクセサリー", photos: ["works/02_IKEA SKADIS ボードアクセサリー-1.jpg", "works/02_IKEA SKADIS ボードアクセサリー-2.jpg"] },
+  { title: "分割キーボードアーム", photos: ["works/03_分割キーボードアーム-1.jpg", "works/03_分割キーボードアーム-2.jpg"] },
 ];
+
+/* 作品をまたいで全部の写真を1列に並べたもの。ライトボックスはこれを送る */
+const FLAT = WORKS.flatMap((w, wi) =>
+  w.photos.map((src, pi) => ({
+    src, title: w.title, wi, pi, of: w.photos.length
+  }))
+);
 
 /* ---- WORKS を組み立てる ---- */
 (function () {
   const grid = document.getElementById("works-grid");
-  PHOTOS.forEach((p, i) => {
+  let flatIndex = 0;
+
+  WORKS.forEach((w, i) => {
+    const first = flatIndex;
+    flatIndex += w.photos.length;
+
     const a = document.createElement("a");
     a.className = "card rise";
     a.href = "#works";
     a.innerHTML =
       '<div class="frame"><span class="no">' +
-      String(i + 1).padStart(2, "0") +
-      '</span><img loading="lazy" alt=""></div>' +
+      String(i + 1).padStart(2, "0") + "</span>" +
+      (w.photos.length > 1
+        ? '<span class="count">' + w.photos.length + "</span>" : "") +
+      '<img loading="lazy" alt=""></div>' +
       '<div class="meta"><span class="ttl"></span><span class="cat">3D PRINT</span></div>';
-    a.querySelector("img").src = p.src;
-    a.querySelector("img").alt = p.caption;
-    a.querySelector(".ttl").textContent = p.caption;
-    a.addEventListener("click", e => { e.preventDefault(); openLb(i); });
+
+    a.querySelector("img").src = w.photos[0];
+    a.querySelector("img").alt = w.title;
+    a.querySelector(".ttl").textContent = w.title;
+    a.addEventListener("click", e => { e.preventDefault(); openLb(first); });
     grid.appendChild(a);
   });
 })();
@@ -63,10 +83,12 @@ const lbCap = document.getElementById("lb-cap");
 let idx = 0;
 
 function openLb(i) {
-  idx = (i + PHOTOS.length) % PHOTOS.length;
-  lbImg.src = PHOTOS[idx].src;
-  lbImg.alt = PHOTOS[idx].caption;
-  lbCap.textContent = `${String(idx + 1).padStart(2, "0")} — ${PHOTOS[idx].caption}`;
+  idx = (i + FLAT.length) % FLAT.length;
+  const p = FLAT[idx];
+  lbImg.src = p.src;
+  lbImg.alt = p.title;
+  // 同じ作品に複数枚あるときだけ「1 / 2」を出す
+  lbCap.textContent = p.title + (p.of > 1 ? `　${p.pi + 1} / ${p.of}` : "");
   lb.classList.add("open");
   document.body.style.overflow = "hidden";
 }

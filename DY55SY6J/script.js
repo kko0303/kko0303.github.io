@@ -10,6 +10,8 @@ const WORKS = [
   { title: "アクセサリーツリー", photos: ["works/01_アクセサリーツリー.jpg"] },
   { title: "IKEA SKADIS ボードアクセサリー", photos: ["works/02_IKEA SKADIS ボードアクセサリー-1.jpg", "works/02_IKEA SKADIS ボードアクセサリー-2.jpg"] },
   { title: "分割キーボードアーム", photos: ["works/03_分割キーボードアーム-1.jpg", "works/03_分割キーボードアーム-2.jpg", "works/03_分割キーボードアーム-3.jpg"] },
+  { title: "モニターデスク棚", photos: ["works/04_モニターデスク棚.jpg"] },
+  { title: "事務所用収納", photos: ["works/05_事務所用収納.jpg"] },
 ];
 
 /* 作品をまたいで全部の写真を1列に並べたもの。ライトボックスはこれを送る */

@@ -199,13 +199,29 @@ nav a:hover{color:var(--text)} nav a:hover::after{width:100%}
   aspect-ratio:4/5; border:1px solid var(--line-soft);
   transition:border-color .45s;
 }
+/* 複数枚は重ねて置き、透明度で入れ替える */
 .card .frame img{
+  position:absolute; inset:0;
   width:100%; height:100%; object-fit:cover;
-  transition:transform 1.1s cubic-bezier(.2,.7,.3,1), filter .6s;
+  opacity:0;
+  transition:opacity 1.1s ease, transform 1.1s cubic-bezier(.2,.7,.3,1), filter .6s;
   filter:saturate(.92);
 }
+.card .frame img.on{opacity:1}
 .card:hover .frame{border-color:var(--gold)}
-.card:hover .frame img{transform:scale(1.06); filter:saturate(1.05)}
+.card:hover .frame img.on{transform:scale(1.06); filter:saturate(1.05)}
+
+/* 何枚目を見ているかを示す点 */
+.card .dots{
+  position:absolute; z-index:3; left:0; right:0; bottom:13px;
+  display:flex; gap:7px; justify-content:center; pointer-events:none;
+}
+.card .dots i{
+  width:5px; height:5px; border-radius:50%;
+  background:rgba(255,255,255,.32);
+  transition:background .5s ease, transform .5s ease;
+}
+.card .dots i.on{background:var(--gold-lt); transform:scale(1.4)}
 .card .frame::after{
   content:""; position:absolute; inset:0; pointer-events:none;
   background:linear-gradient(180deg,transparent 55%,rgba(10,10,12,.7));

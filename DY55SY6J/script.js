@@ -9,7 +9,7 @@
 const WORKS = [
   { title: "アクセサリーツリー", photos: ["works/01_アクセサリーツリー.jpg"] },
   { title: "IKEA SKADIS ボードアクセサリー", photos: ["works/02_IKEA SKADIS ボードアクセサリー-1.jpg", "works/02_IKEA SKADIS ボードアクセサリー-2.jpg"] },
-  { title: "分割キーボードアーム", photos: ["works/03_分割キーボードアーム-1.jpg", "works/03_分割キーボードアーム-2.jpg"] },
+  { title: "分割キーボードアーム", photos: ["works/03_分割キーボードアーム-1.jpg", "works/03_分割キーボードアーム-2.jpg", "works/03_分割キーボードアーム-3.jpg"] },
 ];
 
 /* 作品をまたいで全部の写真を1列に並べたもの。ライトボックスはこれを送る */
@@ -19,10 +19,18 @@ const FLAT = WORKS.flatMap((w, wi) =>
   }))
 );
 
-/* ---- WORKS を組み立てる ---- */
+/* ---- WORKS を組み立てる ----
+   複数枚ある作品は、タップしなくてもゆっくり入れ替わります。
+   画面に入っているカードだけを動かし、見えなくなったら止めます。   */
+const SLIDE_MS = 3600;          // 1枚あたりの表示時間
+const FADE_STAGGER = 700;       // カードごとに開始をずらす量
+
 (function () {
   const grid = document.getElementById("works-grid");
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let flatIndex = 0;
+
+  const shows = [];             // 自動送りするカードの管理表
 
   WORKS.forEach((w, i) => {
     const first = flatIndex;
@@ -33,18 +41,78 @@ const FLAT = WORKS.flatMap((w, wi) =>
     a.href = "#works";
     a.innerHTML =
       '<div class="frame"><span class="no">' +
-      String(i + 1).padStart(2, "0") + "</span>" +
-      (w.photos.length > 1
-        ? '<span class="count">' + w.photos.length + "</span>" : "") +
-      '<img loading="lazy" alt=""></div>' +
+      String(i + 1).padStart(2, "0") + "</span></div>" +
       '<div class="meta"><span class="ttl"></span><span class="cat">3D PRINT</span></div>';
 
-    a.querySelector("img").src = w.photos[0];
-    a.querySelector("img").alt = w.title;
+    const frame = a.querySelector(".frame");
     a.querySelector(".ttl").textContent = w.title;
-    a.addEventListener("click", e => { e.preventDefault(); openLb(first); });
+
+    // 写真を重ねて置く。1枚目だけ表示状態にしておく
+    const imgs = w.photos.map((src, k) => {
+      const img = new Image();
+      img.src = src;
+      img.alt = w.title;
+      if (k === 0) img.classList.add("on");
+      else img.loading = "lazy";
+      frame.appendChild(img);
+      return img;
+    });
+
+    let dots = [];
+    if (w.photos.length > 1) {
+      const box = document.createElement("div");
+      box.className = "dots";
+      dots = w.photos.map((_, k) => {
+        const d = document.createElement("i");
+        if (k === 0) d.classList.add("on");
+        box.appendChild(d);
+        return d;
+      });
+      frame.appendChild(box);
+    }
+
+    const show = { imgs, dots, at: 0, timer: null, visible: false };
+
+    show.step = () => {
+      show.imgs[show.at].classList.remove("on");
+      show.dots[show.at]?.classList.remove("on");
+      show.at = (show.at + 1) % show.imgs.length;
+      show.imgs[show.at].classList.add("on");
+      show.dots[show.at]?.classList.add("on");
+    };
+
+    // タップしたら、いま見えている写真から拡大表示を開く
+    a.addEventListener("click", e => { e.preventDefault(); openLb(first + show.at); });
+
     grid.appendChild(a);
+
+    if (w.photos.length > 1 && !still) {
+      show.el = a;
+      shows.push(show);
+    }
   });
+
+  if (!shows.length) return;
+
+  // 画面外のカードは止めておく
+  const vis = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      const show = shows.find(s => s.el === en.target);
+      if (!show) return;
+      if (en.isIntersecting && !show.timer) {
+        const delay = FADE_STAGGER * shows.indexOf(show);
+        show.timer = setTimeout(function tick() {
+          show.step();
+          show.timer = setTimeout(tick, SLIDE_MS);
+        }, SLIDE_MS + delay);
+      } else if (!en.isIntersecting && show.timer) {
+        clearTimeout(show.timer);
+        show.timer = null;
+      }
+    });
+  }, { threshold: .35 });
+
+  shows.forEach(s => vis.observe(s.el));
 })();
 
 /* ---- ヘッダーの追従 ---- */

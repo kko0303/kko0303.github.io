@@ -22,8 +22,11 @@ const FLAT = WORKS.flatMap((w, wi) =>
 /* ---- WORKS を組み立てる ----
    複数枚ある作品は、タップしなくてもゆっくり入れ替わります。
    画面に入っているカードだけを動かし、見えなくなったら止めます。   */
-const SLIDE_MS = 3600;          // 1枚あたりの表示時間
-const FADE_STAGGER = 700;       // カードごとに開始をずらす量
+/* 速さの調整はこの3つだけ。数字はミリ秒（1000 = 1秒）
+   遅くしたいときは SLIDE_MS を大きく、速くしたいときは小さくします。 */
+const FIRST_MS = 900;           // カードが見えてから最初に切り替わるまで
+const SLIDE_MS = 2000;          // 2枚目以降、1枚あたりの表示時間
+const FADE_STAGGER = 250;       // カードごとに開始をずらす量
 
 (function () {
   const grid = document.getElementById("works-grid");
@@ -100,11 +103,13 @@ const FADE_STAGGER = 700;       // カードごとに開始をずらす量
       const show = shows.find(s => s.el === en.target);
       if (!show) return;
       if (en.isIntersecting && !show.timer) {
-        const delay = FADE_STAGGER * shows.indexOf(show);
+        // 最初の1回だけ早く動かす。スクロールで通り過ぎる人にも
+        // 「これは複数枚ある」と気づいてもらうため。
+        const delay = FIRST_MS + FADE_STAGGER * shows.indexOf(show);
         show.timer = setTimeout(function tick() {
           show.step();
           show.timer = setTimeout(tick, SLIDE_MS);
-        }, SLIDE_MS + delay);
+        }, delay);
       } else if (!en.isIntersecting && show.timer) {
         clearTimeout(show.timer);
         show.timer = null;

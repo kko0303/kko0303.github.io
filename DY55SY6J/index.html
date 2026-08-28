@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>沓澤 晃一 | Official Site</title>
-<meta name="description" content="3Dプリンターでつくるものと、日々のお知らせ。">
+<title>3D PRINT WORKS</title>
+<meta name="description" content="3Dプリンターで身のまわりの道具を設計してつくっています。">
 <meta name="theme-color" content="#0a0a0c">
 
 <!-- ===== 検索避け =====================================================
      検索エンジンにこのページを載せないための指定です。
+     個人情報を消したので、検索に載せたくなったらこの4行を消してください。
      robots.txt でクロール自体を止めてはいけません。Googleはページを
      読みに来て初めて noindex に気づくので、ブロックすると逆に
      「URLだけ」が検索結果に残ることがあります。
@@ -19,9 +20,9 @@
 <meta name="referrer" content="no-referrer">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="沓澤 晃一 | Official Site">
-<meta property="og:description" content="3Dプリンターでつくるものと、日々のお知らせ。">
-<meta property="og:image" content="works/01_アクセサリーツリー.jpg">
+<meta property="og:title" content="3D PRINT WORKS">
+<meta property="og:description" content="3Dプリンターで身のまわりの道具を設計してつくっています。">
+<meta property="og:image" content="works/03_分割キーボードアーム-3.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,25 +34,24 @@
 <!-- ============================================================================
      文面はこのファイルだけ直せば変わります。
 
-       index.html   ← 文章・見出し・日付（このファイル）
+       index.html   ← 文章・見出し（このファイル）
        style.css    ← 色や余白などの見た目
-       script.js    ← 作品リスト（写真のキャプション）と動き
+       script.js    ← 作品リストと、各作品の説明文（NOTES）
 
      タグ（< > で囲まれた部分）は消さずに、その内側の文字だけ書き換えてください。
-     セクションごと要らなければ <section> から </section> まで丸ごと消せます。
-     直したら index.html をブラウザで開いて確認 → python3 publish.py で site/ を更新。
+     直したら index.html をブラウザで開いて確認 → python3 publish.py
      ============================================================================ -->
 
 <header id="hdr">
   <a class="brand" href="#hero">
     <span class="mark"></span>
-    <span class="wm">KUTSUZAWA</span>
+    <span class="wm">3D PRINT WORKS</span>
   </a>
   <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
   <nav id="nav">
     <ul>
+      <li><a href="#dock">ARMREST DOCK</a></li>
       <li><a href="#works">WORKS</a></li>
-      <li><a href="#news">NEWS</a></li>
       <li><a href="#about">ABOUT</a></li>
     </ul>
   </nav>
@@ -64,14 +64,14 @@
   <div class="inner">
     <div class="hero-line"></div>
     <!-- 小見出し（英字） -->
-    <div class="eyebrow">3D Printing Works &amp; News</div>
-    <!-- 大きく出る名前 -->
-    <h1>沓澤 晃一</h1>
-    <div class="romaji">KOICHI KUTSUZAWA</div>
+    <div class="eyebrow">Design &amp; Print</div>
+    <!-- 大きく出る見出し -->
+    <h1>つくったもの</h1>
+    <div class="romaji">3D PRINT WORKS</div>
     <!-- キャッチコピー。<br> で改行、行を増やしたければ <span> ごとコピー -->
     <p class="lead">
-      <span>つくりたいものを、自分で設計して形にする。</span><br>
-      <span>3Dプリンターにハマっている人間の、作品とお知らせです。</span>
+      <span>欲しいものが売っていないなら、設計して刷る。</span><br>
+      <span>身のまわりの道具を、自分の手でつくっています。</span>
     </p>
   </div>
   <div class="cue">
@@ -80,11 +80,126 @@
   </div>
 </section>
 
+<!-- ==================== 主役の作品：アームレストドック ====================
+     ここが商品紹介のページです。文章は自由に書き換えてください。
+     販売を始めたら、下のほうにある「CTA」のコメントを外すとボタンが出ます。
+     ==================================================================== -->
+<section class="sec" id="dock">
+  <div class="sec-inner">
+    <div class="sec-head rise">
+      <span class="sec-num">01</span>
+      <div class="sec-title">
+        <div class="en">Armrest Dock</div>
+        <div class="jp">アームレストドック</div>
+      </div>
+      <span class="rule"></span>
+    </div>
+
+    <!-- ▼ つかみ -->
+    <div class="dock-lead rise">
+      <p class="dock-catch">机ではなく、椅子に手を預ける。</p>
+      <p>
+        分割キーボードを椅子のアームレストに固定するドックです。
+        手の位置が椅子と一緒に動くので、深く座っても浅く座っても、
+        リクライニングを倒しても、キーボードとの距離が変わりません。
+        肩と手首を、机の高さから解放するための道具です。
+      </p>
+    </div>
+
+    <!-- ▼ 実物写真 -->
+    <figure class="dock-hero rise">
+      <img src="works/03_分割キーボードアーム-3.jpg" alt="アームレストドックの回転ジョイント部" loading="lazy">
+      <figcaption>アームレストの支柱に固定した状態。角度は座ったまま決められます</figcaption>
+    </figure>
+
+    <!-- ▼ 機能の説明 -->
+    <div class="feat rise">
+      <div class="feat-txt">
+        <h3>置くのではなく、噛ませる</h3>
+        <p>
+          キーボードを前から水平に差し込むと、レールの爪がケースの縁に掛かり、
+          前ラッチが噛みます。持ち上げても外れません。
+          外すときは前ラッチを6mm前へ滑らせるだけです。
+        </p>
+      </div>
+      <figure class="feat-fig"><img src="figures/fig-slidein.svg" alt="差し込みとラッチの図"></figure>
+    </div>
+
+    <div class="feat rise reverse">
+      <div class="feat-txt">
+        <h3>角度は2軸、別々に決まる</h3>
+        <p>
+          チルトは15度刻みの歯で位置が決まるので、締め直しても同じ角度に戻ります。
+          テント角は別の軸なので、前後の傾きを決めてから、
+          手首のひねりだけを追い込めます。
+        </p>
+      </div>
+      <figure class="feat-fig"><img src="figures/fig-angle.svg" alt="チルトとテント角の図"></figure>
+    </div>
+
+    <div class="feat rise">
+      <div class="feat-txt">
+        <h3>椅子に穴を開けません</h3>
+        <p>
+          アームレストの支柱をクランプで挟むだけです。
+          テーパーで自己保持するので締め込みすぎる必要もありません。
+          外せば椅子は元のまま。売却や返却の予定がある椅子でも使えます。
+        </p>
+      </div>
+      <figure class="feat-fig"><img src="figures/fig-clamp.svg" alt="支柱クランプの図"></figure>
+    </div>
+
+    <!-- ▼ 構成図 -->
+    <figure class="dock-assembly rise">
+      <img src="figures/fig-assembly.jpg" alt="ドックの構成図" loading="lazy">
+      <figcaption>片腕ぶんの構成。オレンジ＝支柱クランプとアーム、青＝アップライト、緑＝キーボードを受けるキャリッジ</figcaption>
+    </figure>
+
+    <!-- ▼ 仕様 -->
+    <dl class="spec dock-spec rise">
+      <div><dt>形式</dt><dd>受注制作（椅子とキーボードに合わせて調整）</dd></div>
+      <div><dt>構成</dt><dd>片腕ぶん 9種／約523g</dd></div>
+      <div><dt>素材</dt><dd>PETG（接地面のみ TPU）</dd></div>
+      <div><dt>調整</dt><dd>チルト15度刻み・テント角・高さ・前後位置</dd></div>
+      <div><dt>固定</dt><dd>支柱クランプ式。椅子の加工不要</dd></div>
+      <div><dt>締結</dt><dd>M4／M5ボルト・ナット（ノブボルト3本を含む）</dd></div>
+    </dl>
+
+    <!-- ▼ 正直に書いておくこと -->
+    <div class="dock-note rise">
+      <h4>先に知っておいていただきたいこと</h4>
+      <ul>
+        <li>
+          <strong>椅子の4Dアームレストは、ほぼ動かせなくなります。</strong>
+          実測メッシュで干渉を検証した結果、左右スライドは片側1.2mm、
+          高さ下げは6.9mm、水平回転は±0.6度で当たります。
+          後方スライドと高さ上げだけが残ります。角度出しはドック側で行う前提の設計です。
+        </li>
+        <li>
+          支柱の断面とアームレストパッドの寸法に合わせて作るため、
+          <strong>採寸をお願いしています。</strong>お使いの椅子とキーボードを教えてください。
+        </li>
+        <li>内側に張り出すため、体格によっては太ももに当たる可能性があります。</li>
+      </ul>
+    </div>
+
+    <!-- ▼ CTA（購入ボタン）
+         販売を始めたら、下の div を囲んでいるコメント記号を外し、
+         href の中身を販売ページのURLに置き換えてください。 -->
+    <!--
+    <div class="dock-cta rise">
+      <a class="btn" href="https://example.com/">受注のご相談</a>
+    </div>
+    -->
+
+  </div>
+</section>
+
 <!-- ==================== WORKS ==================== -->
 <section class="sec" id="works">
   <div class="sec-inner">
     <div class="sec-head rise">
-      <span class="sec-num">01</span>
+      <span class="sec-num">02</span>
       <div class="sec-title">
         <div class="en">Works</div>
         <div class="jp">つくったもの</div>
@@ -100,41 +215,6 @@
   </div>
 </section>
 
-<!-- ==================== NEWS ==================== -->
-<section class="sec" id="news">
-  <div class="sec-inner">
-    <div class="sec-head rise">
-      <span class="sec-num">02</span>
-      <div class="sec-title">
-        <div class="en">News</div>
-        <div class="jp">おしらせ</div>
-      </div>
-      <span class="rule"></span>
-    </div>
-
-    <div class="news-split">
-      <figure class="news-figure rise">
-        <img src="news/wedding-rings.jpg" alt="結婚指輪" loading="lazy">
-      </figure>
-      <div class="news-body rise">
-        <!-- ▼ ここから結婚報告の文面 -->
-        <div class="eyebrow">Just Married</div>
-        <div class="news-date">2026.05.19</div>
-        <h3>結婚しました。</h3>
-
-        <!-- 段落を増やすときは <p>〜</p> をまるごとコピーして下に足してください -->
-        <p>このたび、私たちは結婚いたしました。</p>
-        <p>これまで支えてくださった皆さまに、心より感謝申し上げます。
-           ふたりで力を合わせ、明るい家庭を築いてまいります。
-           今後とも変わらぬお付き合いをよろしくお願いいたします。</p>
-
-        <div class="sign">K &amp; M</div>
-        <!-- ▲ ここまで -->
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ==================== ABOUT ==================== -->
 <section class="sec" id="about">
   <div class="sec-inner">
@@ -142,43 +222,34 @@
       <span class="sec-num">03</span>
       <div class="sec-title">
         <div class="en">About</div>
-        <div class="jp">じこしょうかい</div>
+        <div class="jp">つくりかた</div>
       </div>
       <span class="rule"></span>
     </div>
 
-    <div class="about-split">
-      <figure class="portrait rise">
-        <!-- 顔写真を portrait.jpg として置いてください。無い場合はこの figure ごと消してOK -->
-        <img src="portrait.jpg" alt="沓澤 晃一" loading="lazy">
-        <figcaption>KOICHI KUTSUZAWA</figcaption>
-      </figure>
+    <div class="about-single rise">
+      <!-- ▼ 大きめに出る導入の一文 -->
+      <p class="about-lead">
+        既製品では少しだけ足りない、というものを自分でつくっています。
+        頭の中にあるかたちが、そのまま手に取れるものになる。
+        この楽しさが最高です。
+      </p>
+      <!-- ▼ 続きの本文 -->
+      <p>
+        設計はコードで書いています。寸法をひとつのファイルにまとめておいて、
+        数字を変えると全パーツが作り直される仕組みです。
+        印刷する前に、ネジが実際に入るか、可動部がぶつからないか、
+        造形サイズに収まるかを機械的に検査してから刷ります。
+        「刷ってから合わない」を減らすためです。
+      </p>
 
-      <div class="rise">
-        <!-- ▼ 大きめに出る導入の一文 -->
-        <p class="about-lead">
-          最近は3Dプリンターにすっかりハマっています。
-          自分で設計したものが、そのまま形になって手元に出てくる。
-          この楽しさが最高です。
-        </p>
-        <!-- ▼ 続きの本文 -->
-        <p>
-          とはいえニッチな趣味なので、話してもあまり共感してもらえないことも多々。
-          上に並べているのは、そうやってひとりで作ってきたものです。
-        </p>
-        <p>
-          美澪ちゃんとは、店で一緒に働いています。
-          いつも迷惑ばかりかけていて、頼りっぱなしで頭が上がりません。
-        </p>
-
-        <!-- ▼ 一覧。行を増やすときは <div>〜</div> をコピー、消すときは行ごと削除 -->
-        <dl class="spec">
-          <div><dt>NAME</dt><dd>沓澤 晃一 / Koichi Kutsuzawa</dd></div>
-          <div><dt>BIRTH</dt><dd>1998.03.03</dd></div>
-          <div><dt>HOBBY</dt><dd>3Dプリンター（設計・出力・後加工）</dd></div>
-          <div><dt>TOOLS</dt><dd>FDM 3Dプリンター / PLA・PLA+</dd></div>
-        </dl>
-      </div>
+      <!-- ▼ 一覧。行を増やすときは <div>〜</div> をコピー、消すときは行ごと削除 -->
+      <dl class="spec">
+        <div><dt>PRINTER</dt><dd>FDM 3Dプリンター（0.2 / 0.4mm ノズル）</dd></div>
+        <div><dt>MATERIAL</dt><dd>PLA・PLA+・PETG・TPU</dd></div>
+        <div><dt>DESIGN</dt><dd>OpenSCAD / Python（manifold3d）</dd></div>
+        <div><dt>CHECK</dt><dd>ボルト継手の監査・干渉スイープ・水密検査</dd></div>
+      </dl>
     </div>
   </div>
 </section>
@@ -188,13 +259,13 @@
   <div class="sec-inner">
     <div class="eyebrow">Thank you</div>
     <div class="big">ありがとう<br>ございます</div>
-    <p>このページは、お渡ししたチップからのみご覧いただけます。</p>
+    <p>ご覧いただきありがとうございました。</p>
     <div class="closing-mark"></div>
   </div>
 </section>
 
 <footer>
-  <span>&copy; 2026 KOICHI KUTSUZAWA</span>
+  <span>&copy; 2026 3D PRINT WORKS</span>
   <span>PRIVATE PAGE</span>
 </footer>
 

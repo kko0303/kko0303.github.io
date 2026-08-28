@@ -14,6 +14,43 @@ const WORKS = [
   { title: "事務所用収納", photos: ["works/05_事務所用収納.jpg"] },
 ];
 
+/* ============================================================
+   作品の説明文。
+   左の「作品名」は上の WORKS の title と同じ字にしてください。
+   build_page.py はここを書き換えないので、写真を足しても消えません。
+   説明が要らない作品は、行ごと消せば何も出ません。
+   ============================================================ */
+const NOTES = {
+  "分割キーボードアーム":
+    "自作の分割キーボードを、椅子のアームレストに載せるドック。" +
+    "机ではなく椅子側に手を固定してしまえば、姿勢を変えても手の位置が変わらない、という発想でつくりました。" +
+    "キーボードは前から水平に差し込むとラッチが噛み、持ち上げても抜けません。" +
+    "チルトは15度刻みの歯で位置が決まり、テント角も別軸で調整できます。" +
+    "片腕ぶんで9種・523g・印刷32時間。素材はPETG。" +
+    "設計は寸法をひとつの設定ファイルにまとめてコードから生成し、" +
+    "印刷前にネジ穴の通り・可動部の干渉・造形サイズを機械的に検査しています。" +
+    "検査の結果、椅子の4Dアームレストの可動域がほぼ死ぬことも分かりました。" +
+    "パッド側面とライザーのすき間が片側1.25mmしかないためです。",
+
+  "IKEA SKADIS ボードアクセサリー":
+    "IKEAの有孔ボード SKÅDIS 用の棚・フック・小物入れ。" +
+    "純正では欲しいサイズが無かったので、必要な形だけ自分で足していきました。" +
+    "同じフィラメントで揃えると、後から作り足しても見た目が揃います。",
+
+  "アクセサリーツリー":
+    "指輪・ブレスレット・ネックレスをまとめて掛けておくスタンド。" +
+    "枝の高さと角度を変えて、絡まずに掛かる位置を探りました。",
+
+  "モニターデスク棚":
+    "モニター下の空間を埋める、引き出し付きの台。" +
+    "机の幅と手持ちの小物に合わせて寸法を決めているので、無駄な余白がありません。",
+
+  "事務所用収納":
+    "職場のカウンターで使う、自立式のツールスタンド。" +
+    "ホチキス・スタンプ・ハサミ・カッターの定位置をつくり、ラベルも一体で印刷しています。" +
+    "置くだけなので壁に穴を開けずに済みます。",
+};
+
 /* 作品をまたいで全部の写真を1列に並べたもの。ライトボックスはこれを送る */
 const FLAT = WORKS.flatMap((w, wi) =>
   w.photos.map((src, pi) => ({
@@ -47,10 +84,15 @@ const FADE_STAGGER = 250;       // カードごとに開始をずらす量
     a.innerHTML =
       '<div class="frame"><span class="no">' +
       String(i + 1).padStart(2, "0") + "</span></div>" +
-      '<div class="meta"><span class="ttl"></span><span class="cat">3D PRINT</span></div>';
+      '<div class="meta"><span class="ttl"></span><span class="cat">3D PRINT</span></div>' +
+      '<p class="desc"></p>';
 
     const frame = a.querySelector(".frame");
     a.querySelector(".ttl").textContent = w.title;
+
+    const note = NOTES[w.title];
+    if (note) a.querySelector(".desc").textContent = note;
+    else a.querySelector(".desc").remove();
 
     // 写真を重ねて置く。1枚目だけ表示状態にしておく
     const imgs = w.photos.map((src, k) => {
@@ -192,8 +234,3 @@ lb.addEventListener("touchend", e => {
   if (Math.abs(dx) > 50) openLb(idx + (dx < 0 ? 1 : -1));
   x0 = null;
 }, { passive: true });
-
-/* ---- 画像が無い場合はその枠を静かに畳む ---- */
-document.querySelectorAll(".portrait img").forEach(img => {
-  img.addEventListener("error", () => img.closest("figure").remove());
-});

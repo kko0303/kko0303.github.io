@@ -186,6 +186,91 @@ nav a:hover{color:var(--text)} nav a:hover::after{width:100%}
 @keyframes fall{0%{top:-54px}60%,100%{top:54px}}
 
 /* ============================================================
+   ARMREST DOCK（商品紹介）
+   ============================================================ */
+#dock{background:var(--bg-2); border-block:1px solid var(--line-soft)}
+
+.dock-lead{max-width:720px; margin-bottom:clamp(36px,6vw,64px)}
+.dock-catch{
+  font-family:var(--serif); font-weight:300;
+  font-size:clamp(1.7rem,5vw,2.8rem); line-height:1.5; letter-spacing:.08em;
+  color:var(--text); margin-bottom:24px;
+}
+.dock-lead p{font-size:.92rem; line-height:2.4; color:#c4c1ba}
+
+.dock-hero{margin-bottom:clamp(48px,8vw,96px)}
+.dock-hero img{
+  width:100%; max-height:62vh; object-fit:cover;
+  border:1px solid var(--line-soft);
+}
+figcaption{
+  margin-top:14px; font-size:.7rem; letter-spacing:.1em;
+  color:var(--muted); line-height:1.9;
+}
+
+/* 機能ブロック：文章と図を左右に */
+.feat{
+  display:grid; grid-template-columns:1fr 1.15fr;
+  gap:clamp(24px,4vw,64px); align-items:center;
+  padding:clamp(28px,4vw,44px) 0;
+  border-top:1px solid var(--line-soft);
+}
+.feat.reverse .feat-txt{order:2}
+.feat.reverse .feat-fig{order:1}
+@media (max-width:820px){
+  .feat{grid-template-columns:1fr; gap:22px}
+  .feat.reverse .feat-txt,.feat.reverse .feat-fig{order:initial}
+}
+.feat h3{
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(1.25rem,3.4vw,1.7rem); letter-spacing:.08em;
+  line-height:1.6; margin-bottom:16px;
+}
+.feat p{font-size:.87rem; line-height:2.35; color:#b6b3ad}
+.feat-fig{
+  background:var(--bg-3); border:1px solid var(--line-soft);
+  padding:clamp(12px,2vw,22px);
+}
+.feat-fig img{width:100%; height:auto}
+
+/* 構成図は図面らしく明るい紙の上に置く */
+.dock-assembly{margin:clamp(40px,6vw,72px) 0 0}
+.dock-assembly img{
+  width:100%; background:#f4f2ec; padding:clamp(12px,2vw,26px);
+  border:1px solid var(--line-soft);
+}
+
+.dock-spec{margin-top:clamp(40px,6vw,72px)}
+
+.dock-note{
+  margin-top:clamp(36px,5vw,56px);
+  border:1px solid var(--line); padding:clamp(20px,3vw,32px);
+  background:rgba(201,162,39,.04);
+}
+.dock-note h4{
+  font-size:.68rem; letter-spacing:.24em; color:var(--gold);
+  font-weight:600; margin-bottom:16px;
+}
+.dock-note ul{list-style:none; display:flex; flex-direction:column; gap:14px}
+.dock-note li{
+  font-size:.82rem; line-height:2.2; color:#b6b3ad;
+  padding-left:18px; position:relative;
+}
+.dock-note li::before{
+  content:""; position:absolute; left:0; top:.95em;
+  width:6px; height:1px; background:var(--gold);
+}
+.dock-note strong{color:var(--text); font-weight:400}
+
+.dock-cta{margin-top:clamp(36px,5vw,56px); text-align:center}
+.btn{
+  display:inline-block; border:1px solid var(--line);
+  padding:19px 48px; font-size:.82rem; letter-spacing:.18em;
+  color:var(--gold-lt); transition:background .4s, color .4s, border-color .4s;
+}
+.btn:hover{background:var(--gold); color:#0a0a0c; border-color:var(--gold)}
+
+/* ============================================================
    WORKS
    ============================================================ */
 #works{background:var(--bg)}
@@ -239,9 +324,19 @@ nav a:hover{color:var(--text)} nav a:hover::after{width:100%}
   background:rgba(10,10,12,.6); backdrop-filter:blur(4px);
   font-family:var(--serif); font-size:.72rem; color:var(--gold-lt);
 }
-.card .meta{display:flex; align-items:baseline; gap:14px; margin-top:16px}
+.card{cursor:zoom-in; display:block; align-self:start}
+.card .meta{
+  display:flex; align-items:baseline; gap:14px; margin-top:16px;
+  padding-bottom:10px; border-bottom:1px solid var(--line-soft);
+}
 .card .ttl{font-size:.92rem; letter-spacing:.1em; font-weight:400}
 .card .cat{font-size:.6rem; letter-spacing:.24em; color:var(--muted); margin-left:auto; flex:none}
+
+/* 作品の説明。カードの高さは中身に合わせて伸びる */
+.card .desc{
+  margin-top:12px; font-size:.78rem; line-height:2.05;
+  color:#a7a49e; letter-spacing:.03em;
+}
 
 .works-note{
   margin-top:clamp(34px,5vw,56px); padding-top:26px;
@@ -250,39 +345,11 @@ nav a:hover{color:var(--text)} nav a:hover::after{width:100%}
 }
 
 /* ============================================================
-   NEWS（結婚報告）
-   ============================================================ */
-#news{background:var(--bg-2); border-block:1px solid var(--line-soft)}
-.news-split{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(28px,5vw,72px); align-items:center}
-@media (max-width:880px){.news-split{grid-template-columns:1fr}}
-
-.news-figure{position:relative; overflow:hidden; border:1px solid var(--line-soft)}
-.news-figure img{width:100%; aspect-ratio:4/3; object-fit:cover; filter:saturate(.96) brightness(.96)}
-.news-figure::after{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  box-shadow:inset 0 0 90px rgba(10,10,12,.55);
-}
-.news-date{
-  font-family:var(--serif); font-size:clamp(1.5rem,4vw,2.1rem);
-  letter-spacing:.16em; color:var(--gold-lt); margin:18px 0 14px;
-}
-.news-body h3{
-  font-family:var(--serif); font-weight:400;
-  font-size:clamp(1.6rem,4.4vw,2.5rem); letter-spacing:.1em; line-height:1.4;
-  margin-bottom:22px;
-}
-.news-body p{font-size:.9rem; line-height:2.4; color:#c4c1ba}
-.news-body p + p{margin-top:18px}
-.sign{
-  margin-top:30px; padding-top:20px; border-top:1px solid var(--line);
-  font-family:var(--serif); letter-spacing:.3em; color:var(--gold-lt); font-size:.9rem;
-}
-
-/* ============================================================
    ABOUT
    ============================================================ */
 .about-split{display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(28px,5vw,72px)}
 @media (max-width:880px){.about-split{grid-template-columns:1fr}}
+.about-single{max-width:760px}
 .about-lead{font-size:clamp(.95rem,2.4vw,1.12rem); line-height:2.4; font-weight:300}
 .about-lead + p{margin-top:22px; font-size:.88rem; color:#b6b3ad; line-height:2.4}
 
@@ -295,9 +362,6 @@ nav a:hover{color:var(--text)} nav a:hover::after{width:100%}
 .spec dt{font-size:.62rem; letter-spacing:.26em; color:var(--gold); padding-top:.35em}
 .spec dd{font-size:.87rem; color:#c4c1ba}
 
-.portrait{position:relative}
-.portrait img{width:100%; aspect-ratio:3/4; object-fit:cover; border:1px solid var(--line-soft); background:var(--bg-3)}
-.portrait figcaption{margin-top:14px; font-size:.62rem; letter-spacing:.24em; color:var(--muted)}
 
 /* ============================================================
    結び

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 250" role="img"
+     aria-label="アームレストの支柱をクランプで挟んで固定する図。椅子に穴を開けない">
+  <defs>
+    <style>
+      .ln   { fill:none; stroke:#8f8d88; stroke-width:1.4 }
+      .gold { fill:none; stroke:#c9a227; stroke-width:1.8 }
+      .thin { fill:none; stroke:#8f8d88; stroke-width:1; opacity:.6; stroke-dasharray:3 4 }
+      .post { fill:#26262e; stroke:#8f8d88; stroke-width:1.4 }
+      .pad  { fill:#1c1c22; stroke:#8f8d88; stroke-width:1.4 }
+      .t    { fill:#a7a49e; font:400 11px "Noto Sans JP",sans-serif; letter-spacing:.06em }
+      .tg   { fill:#e6cf87; font:400 11px "Noto Sans JP",sans-serif; letter-spacing:.08em }
+      .num  { fill:#c9a227; font:400 13px "Cormorant Garamond",serif; letter-spacing:.1em }
+      .dim  { fill:#8f8d88; font:400 9px "Cormorant Garamond",serif }
+    </style>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#c9a227"/>
+    </marker>
+  </defs>
+
+  <text class="num" x="4" y="16">01</text>
+  <text class="tg"  x="26" y="16">支柱を挟むだけ。椅子に穴を開けません</text>
+
+  <!-- 側面図 -->
+  <g transform="translate(30,40)">
+    <!-- アームレストパッド -->
+    <rect class="pad" x="10" y="0" width="130" height="18" rx="4"/>
+    <text class="t" x="10" y="-6">アームレストパッド</text>
+    <!-- 支柱 -->
+    <rect class="post" x="58" y="18" width="34" height="120"/>
+    <text class="t" x="98" y="120">支柱</text>
+    <!-- クランプ（左右から挟む） -->
+    <path class="gold" d="M44 54 H58 M44 54 V96 H58"/>
+    <path class="gold" d="M106 54 H92 M106 54 V96 H92"/>
+    <path class="gold" marker-end="url(#ar2)" d="M28 75 H42"/>
+    <path class="gold" marker-end="url(#ar2)" d="M122 75 H108"/>
+    <text class="tg" x="8" y="150">ライザー（クランプ）</text>
+    <!-- ネジ -->
+    <circle cx="50" cy="64" r="2.6" fill="#c9a227"/>
+    <circle cx="50" cy="86" r="2.6" fill="#c9a227"/>
+    <circle cx="100" cy="64" r="2.6" fill="#c9a227"/>
+    <circle cx="100" cy="86" r="2.6" fill="#c9a227"/>
+    <text class="t" x="8" y="166">M5×70 を4本で締める</text>
+  </g>
+
+  <!-- 区切り -->
+  <path class="ln" d="M228 34 V214" stroke-dasharray="2 5" opacity=".5"/>
+
+  <!-- 断面図 -->
+  <text class="num" x="250" y="16">02</text>
+  <text class="tg"  x="272" y="16">断面</text>
+
+  <g transform="translate(310,110)">
+    <!-- 支柱断面 -->
+    <rect class="post" x="-27" y="-16" width="54" height="32"/>
+    <text class="dim" x="-27" y="-24">32.5 × 55 mm</text>
+    <!-- クランプが囲む -->
+    <path class="gold" d="M-42 -30 H-27 M-42 -30 V30 H-27"/>
+    <path class="gold" d="M42 -30 H27 M42 -30 V30 H27"/>
+    <!-- テーパーで自己保持 -->
+    <path class="thin" d="M-52 -30 L-52 30 M52 -30 L52 30"/>
+    <text class="t" x="-72" y="56">テーパー3.3度で自己保持</text>
+    <text class="t" x="-72" y="76">滑るときはTPUライナーを追加</text>
+  </g>
+</svg>

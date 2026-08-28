@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 250" role="img"
+     aria-label="キーボードを前から水平に差し込むと、ラッチが噛んで固定される図">
+  <defs>
+    <style>
+      .ln   { fill:none; stroke:#8f8d88; stroke-width:1.4 }
+      .gold { fill:none; stroke:#c9a227; stroke-width:1.8 }
+      .fill { fill:#1c1c22; stroke:#8f8d88; stroke-width:1.4 }
+      .kb   { fill:#2a2a33; stroke:#e6cf87; stroke-width:1.6 }
+      .t    { fill:#a7a49e; font:400 11px "Noto Sans JP",sans-serif; letter-spacing:.06em }
+      .tg   { fill:#e6cf87; font:400 11px "Noto Sans JP",sans-serif; letter-spacing:.08em }
+      .num  { fill:#c9a227; font:400 13px "Cormorant Garamond",serif; letter-spacing:.1em }
+    </style>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#c9a227"/>
+    </marker>
+  </defs>
+
+  <!-- ① 差し込む -->
+  <text class="num" x="4" y="16">01</text>
+  <text class="tg"  x="26" y="16">前から水平に差し込む</text>
+
+  <!-- デッキ -->
+  <path class="fill" d="M40 78 H250 V90 H40 Z"/>
+  <!-- レール（両端の掛かり） -->
+  <path class="gold" d="M46 78 V66 H58"/>
+  <path class="gold" d="M244 78 V66 H232"/>
+  <!-- キーボード（進入中） -->
+  <g>
+    <rect class="kb" x="286" y="52" width="96" height="22" rx="3"/>
+    <path class="ln" d="M296 74 V80 M372 74 V80"/>
+  </g>
+  <!-- 進入方向 -->
+  <path class="gold" marker-end="url(#ar)" d="M280 63 H258"/>
+  <text class="t" x="40" y="112">デッキ（受け皿）</text>
+  <text class="t" x="286" y="44">キーボード</text>
+
+  <!-- 区切り -->
+  <path class="ln" d="M20 138 H400" stroke-dasharray="2 5" opacity=".5"/>
+
+  <!-- ② 噛む -->
+  <text class="num" x="4" y="166">02</text>
+  <text class="tg"  x="26" y="166">ラッチが噛んで抜けない</text>
+
+  <path class="fill" d="M40 218 H250 V230 H40 Z"/>
+  <rect class="kb" x="52" y="196" width="186" height="22" rx="3"/>
+  <!-- レールの爪がケースの縁に掛かる -->
+  <path class="gold" d="M46 218 V194 H62"/>
+  <path class="gold" d="M244 218 V194 H228"/>
+  <!-- 前ラッチ -->
+  <path class="gold" d="M258 218 V198 H272 V218"/>
+  <text class="tg" x="278" y="206">前ラッチ</text>
+  <text class="t"  x="278" y="222">6mm前進で解除</text>
+  <!-- 持ち上げても抜けない -->
+  <path class="gold" marker-end="url(#ar)" d="M145 190 V172"/>
+  <text class="t" x="155" y="180">持ち上げても外れない</text>
+</svg>

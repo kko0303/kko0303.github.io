@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 250" role="img"
+     aria-label="外したカバーを立てて収納し、その上の棚にマウスを置ける図">
+  <defs>
+    <style>
+      .ln    { fill:none; stroke:#8f8d88; stroke-width:1.4 }
+      .gold  { fill:none; stroke:#c9a227; stroke-width:1.8 }
+      .part  { fill:#1c1c22; stroke:#8f8d88; stroke-width:1.4 }
+      .stand { fill:#20202a; stroke:#c9a227; stroke-width:1.8 }
+      .cover { fill:#2a2a33; stroke:#e6cf87; stroke-width:1.6 }
+      .mouse { fill:#2f2f39; stroke:#e6cf87; stroke-width:1.6 }
+      .t     { fill:#a7a49e; font:400 10.5px "Noto Sans JP",sans-serif; letter-spacing:.05em }
+      .tg    { fill:#e6cf87; font:400 10.5px "Noto Sans JP",sans-serif; letter-spacing:.07em }
+      .num   { fill:#c9a227; font:400 13px "Cormorant Garamond",serif; letter-spacing:.1em }
+      .dim   { fill:#8f8d88; font:400 9px "Cormorant Garamond",serif }
+    </style>
+    <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#c9a227"/>
+    </marker>
+  </defs>
+
+  <text class="num" x="4" y="16">01</text>
+  <text class="tg"  x="26" y="16">右のクランプが、そのまま置き場になる</text>
+
+  <!-- アームレストパッド（参考） -->
+  <path class="ln" d="M28 96 H150" stroke-dasharray="3 4"/>
+  <text class="t" x="28" y="90">アームレスト</text>
+
+  <!-- 支柱とクランプ -->
+  <rect class="part" x="60" y="96" width="26" height="118"/>
+  <path class="gold" d="M52 120 H60 M52 120 V172 H60"/>
+  <path class="gold" d="M94 120 H86 M94 120 V172 H86"/>
+  <text class="t" x="30" y="232">支柱クランプ</text>
+
+  <!-- 既存のM4×2にそのまま留まる -->
+  <circle cx="90" cy="134" r="2.4" fill="#c9a227"/>
+  <circle cx="90" cy="156" r="2.4" fill="#c9a227"/>
+  <path class="gold" d="M96 145 H150" stroke-dasharray="4 3"/>
+  <text class="t" x="100" y="164">既存のM4×2に共締め</text>
+
+  <!-- ホルダー本体（立ち上がり壁） -->
+  <path class="stand" d="M150 214 H198 V202 H162 V70 H150 Z"/>
+  <!-- 抜け止めのツメ -->
+  <path class="gold" d="M150 70 H140 V78"/>
+  <text class="tg" x="96" y="66">抜け止めのツメ</text>
+
+  <!-- 立てたカバー -->
+  <rect class="cover" x="168" y="84" width="16" height="118" rx="2"/>
+  <path class="gold" marker-end="url(#ar3)" d="M176 232 V210"/>
+  <text class="tg" x="150" y="246">カバーを立てて収納</text>
+
+  <!-- マウス棚 -->
+  <path class="stand" d="M150 70 H300 V80 H150 Z"/>
+  <path class="gold" d="M300 80 V64"/>
+  <text class="tg" x="306" y="76">マウス棚</text>
+  <text class="dim" x="306" y="90">内寸 74 × 128 mm</text>
+
+  <!-- マウス（側面） -->
+  <g transform="translate(208,70)">
+    <!-- 本体 -->
+    <path class="mouse" d="M0 0 C0 -14 8 -26 24 -30 C44 -35 62 -28 68 -14 C71 -7 71 -2 70 0 Z"/>
+    <!-- ボタンの分割線 -->
+    <path class="ln" d="M22 -29 C24 -20 25 -10 25 0" stroke-width="1"/>
+    <!-- ホイール -->
+    <rect class="gold" x="14" y="-30" width="6" height="9" rx="3"/>
+    <!-- ケーブル/レシーバ側 -->
+    <path class="ln" d="M70 -6 C78 -8 82 -12 86 -18" stroke-width="1.2"/>
+  </g>
+  <text class="t" x="208" y="118">使わないときの定位置</text>
+
+  <path class="ln" d="M20 250 H400" opacity="0"/>
+</svg>

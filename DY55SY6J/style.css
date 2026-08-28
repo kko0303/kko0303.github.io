@@ -232,11 +232,13 @@ figcaption{
   padding:clamp(12px,2vw,22px);
 }
 .feat-fig img{width:100%; height:auto}
+/* 明るい背景の図はそのまま白地で見せる */
+.feat-fig.light{background:#f4f2ec; padding:clamp(8px,1.4vw,14px)}
 
-/* 構成図は図面らしく明るい紙の上に置く */
-.dock-assembly{margin:clamp(40px,6vw,72px) 0 0}
-.dock-assembly img{
-  width:100%; background:#f4f2ec; padding:clamp(12px,2vw,26px);
+/* 角度が動く全体図 */
+.dock-motion{margin:clamp(40px,6vw,72px) 0 0}
+.dock-motion img{
+  width:100%; background:var(--bg-3);
   border:1px solid var(--line-soft);
 }
 

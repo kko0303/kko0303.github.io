@@ -149,10 +149,46 @@
       <figure class="feat-fig"><img src="figures/fig-clamp.svg" alt="支柱クランプの図"></figure>
     </div>
 
-    <!-- ▼ 構成図 -->
-    <figure class="dock-assembly rise">
-      <img src="figures/fig-assembly.jpg" alt="ドックの構成図" loading="lazy">
-      <figcaption>片腕ぶんの構成。オレンジ＝支柱クランプとアーム、青＝アップライト、緑＝キーボードを受けるキャリッジ</figcaption>
+    <div class="feat rise reverse">
+      <div class="feat-txt">
+        <h3>マウスは、被せて使う</h3>
+        <p>
+          マウスを使うときだけ、キーボードの上に板を被せます。
+          デッキごと傾くので、マウス面の傾きはそのときのチルト・テント角と同じ。
+          外側には高さ10mmのフチが立つので、傾けても滑り落ちません。天板は168×138mmです。
+        </p>
+      </div>
+      <figure class="feat-fig light">
+        <img src="figures/fig-cover.jpg" alt="キーボードに被せるマウス台の図" loading="lazy">
+      </figure>
+    </div>
+
+    <div class="feat rise">
+      <div class="feat-txt">
+        <h3>外したカバーは、マウス置き場になる</h3>
+        <p>
+          使わないカバーは、右のクランプに付けたホルダーへ立てて収めます。
+          そしてその上が棚になっていて、<strong>マウスをそのまま置けます。</strong>
+          カバーを外す・被せるという動作の中に、マウスの定位置が組み込まれている、
+          という考え方です。
+          棚の内寸は74×128mm。ロジクール G703（124×68×43mm）の実寸で確認しています。
+        </p>
+      </div>
+      <figure class="feat-fig">
+        <img src="figures/fig-stand.svg" alt="カバー置き場とマウスホルダーの図">
+      </figure>
+    </div>
+
+    <!-- ▼ 角度が動く全体図（アニメーション）
+         figures/fig-motion.webp は render_dock.py で作り直せます。
+         設計データを直したら python3 render_dock.py を実行してください。 -->
+    <figure class="dock-motion rise">
+      <img src="figures/fig-motion.webp" alt="チルトとテントの角度が変わる様子" loading="lazy">
+      <figcaption>
+        左＝チルト（上下の角度）を側面から、右＝テント（左右の傾き）を正面から。
+        ブロンズ＝支柱クランプとアーム、青灰＝アップライト、緑＝キーボードを受けるキャリッジ、
+        半透明の金＝マウス用カバー。実際の設計データから描き出しています。
+      </figcaption>
     </figure>
 
     <!-- ▼ 仕様 -->

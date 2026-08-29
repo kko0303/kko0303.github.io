@@ -55,7 +55,8 @@ body::before{
   font-family:var(--serif); font-size:.95rem; color:var(--gold);
   letter-spacing:.12em; flex:none;
 }
-.sec-title{flex:none}
+.sec-title{flex:none; font-weight:400; font-size:inherit; margin:0}
+.sec-title .en, .sec-title .jp{display:block}
 .sec-title .en{
   font-family:var(--serif); font-size:clamp(1.9rem,5vw,2.9rem);
   font-weight:400; letter-spacing:.1em; line-height:1.1;
@@ -348,6 +349,11 @@ figcaption{
 .card .desc{
   margin-top:12px; font-size:.78rem; line-height:2.05;
   color:#a7a49e; letter-spacing:.03em;
+}
+/* 詳細セクションがある作品は、飛べることが分かるようにする */
+.card.has-detail{cursor:pointer}
+.card.has-detail .desc::after{
+  content:"　詳しく見る →"; color:var(--gold-lt); white-space:nowrap;
 }
 
 .works-note{

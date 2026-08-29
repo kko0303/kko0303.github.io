@@ -245,8 +245,7 @@ figcaption{
 }
 .dock-overview img{
   width:100%; max-width:520px;
-  background:#f4f2ec; padding:clamp(10px,1.6vw,20px);
-  border:1px solid var(--line-soft);
+  background:var(--bg-3); border:1px solid var(--line-soft);
 }
 .dock-overview figcaption{max-width:620px; text-align:center}
 

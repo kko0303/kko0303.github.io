@@ -3,18 +3,18 @@
   <defs>
     <style>
       .ln   { fill:none; stroke:#8f8d88; stroke-width:1.4 }
-      .gold { fill:none; stroke:#c9a227; stroke-width:1.8 }
+      .gold { fill:none; stroke:#cf7f33; stroke-width:1.8 }   /* 支柱クランプ＝オレンジ（3D図と共通） */
       .thin { fill:none; stroke:#8f8d88; stroke-width:1; opacity:.6; stroke-dasharray:3 4 }
       .post { fill:#26262e; stroke:#8f8d88; stroke-width:1.4 }
       .pad  { fill:#1c1c22; stroke:#8f8d88; stroke-width:1.4 }
       .t    { fill:#a7a49e; font:400 11px "Noto Sans JP",sans-serif; letter-spacing:.06em }
-      .tg   { fill:#e6cf87; font:400 11px "Noto Sans JP",sans-serif; letter-spacing:.08em }
+      .tg   { fill:#e8a763; font:400 11px "Noto Sans JP",sans-serif; letter-spacing:.08em }
       .num  { fill:#c9a227; font:400 13px "Cormorant Garamond",serif; letter-spacing:.1em }
       .dim  { fill:#8f8d88; font:400 9px "Cormorant Garamond",serif }
     </style>
     <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M0 0 L10 5 L0 10 z" fill="#c9a227"/>
+      <path d="M0 0 L10 5 L0 10 z" fill="#cf7f33"/>
     </marker>
   </defs>
 
@@ -36,10 +36,10 @@
     <path class="gold" marker-end="url(#ar2)" d="M122 75 H108"/>
     <text class="tg" x="8" y="150">ライザー（クランプ）</text>
     <!-- ネジ -->
-    <circle cx="50" cy="64" r="2.6" fill="#c9a227"/>
-    <circle cx="50" cy="86" r="2.6" fill="#c9a227"/>
-    <circle cx="100" cy="64" r="2.6" fill="#c9a227"/>
-    <circle cx="100" cy="86" r="2.6" fill="#c9a227"/>
+    <circle cx="50" cy="64" r="2.6" fill="#cf7f33"/>
+    <circle cx="50" cy="86" r="2.6" fill="#cf7f33"/>
+    <circle cx="100" cy="64" r="2.6" fill="#cf7f33"/>
+    <circle cx="100" cy="86" r="2.6" fill="#cf7f33"/>
     <text class="t" x="8" y="166">M5×70 を4本で締める</text>
   </g>
 
